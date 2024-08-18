@@ -51,7 +51,8 @@ if the commands above don't work, then find a different option to install terraf
     then generate a ssh key using the command:
     
     ssh-keygen -t rsa -f prod
-
+    
+    you can also delete the placeholder.txt file. or leave it be.
 
 
 5. In the network terminal initialize terraform and run to apply.
