@@ -1,0 +1,14 @@
+---
+plugin: aws_ec2
+regions:
+  - us-east-1
+keyed_groups:
+  - key: tags.Owner
+    prefix: tag
+filters:
+  instance-state-name : running
+  instance-id:
+   - i-0e95e8a7d66b3a982
+   - i-09b112d4b9a968eda
+compose:
+  ansible_host: public_ip_address

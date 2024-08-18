@@ -1,0 +1,43 @@
+- hosts: aws_ec2
+  gather_facts: True
+  become: yes
+  vars:
+    ansible_user: ec2-user 
+    ansible_ssh_private_key_file: /home/ec2-user/environment/project/keys/production/prod
+    source_file: ./index.html
+    dest_file: /var/www/html
+ 
+  tasks:
+    - name: Install Apache Web Server
+      yum: 
+        name: httpd 
+        state: latest
+ 
+    - name: Copy index.html
+      copy: 
+        src: "{{ source_file }}" 
+        dest: "{{ dest_file }}/index.html" 
+        mode: '0644'
+        
+    - name: Copy image file
+      copy:
+        src: ./star_rail_background.png
+        dest: /var/www/html/star_rail_background.png
+        mode: '0644'
+      notify: Restart Httpd
+ 
+    - name: Start and enable Apache Web Server
+      service: 
+        name: httpd 
+        state: started 
+        enabled: yes
+ 
+    - name: Print debug message
+      debug: 
+        msg: "Website deployed successfully with content!"
+ 
+  handlers:
+    - name: Restart Httpd
+      service: 
+        name: httpd 
+        state: restarted
