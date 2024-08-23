@@ -1,3 +1,6 @@
+
+Infrastructure Set-Up and Actions.
+
 ## Pre-requisites
 
 1. Create a S3 buckets with unique names. The buckets will store the Terraform state. The name of
@@ -132,5 +135,15 @@ if the commands above don't work, then find a different option to install terraf
  
      tf destroy --auto-approve
 
-    # review
 
+
+
+
+AWS Actions
+
+Once you deployed the infrastructure for both prod/network and prod/webserver, we do some tasks.
+
+
+1. Use the webserver-2 to act as our bastion host to connect to the private webservers 5 & 6 and show that it has connection to the internet and downloaded apache. We can just do "curl localhost" after sucessfully connecting to the private webservers.
+2. Check if the load balancer is working correctly by using the DNS link. We simulate server failure by stopping one of the public webservers (1-4) and showing that the remaining 3 will still function. Start the "stopped" webserver after the check.
+3. Use the ansible playbook to configure some changes to the webserver. Then on the load balancer DNS page, refresh to show that the changes were successfully and working properly for the configured webservers.
