@@ -1,0 +1,5 @@
+# Ignore all private key files
+prod/webservers/ec2-user@3.221.47.231
+*.pem
+*.key
+*.private
