@@ -1,6 +1,4 @@
 
-Infrastructure Set-Up and Actions.
-
 ## Pre-requisites
 
 1. Create a S3 buckets with unique names. The buckets will store the Terraform state. The name of
@@ -26,7 +24,7 @@ the buckets should start with <env-name>-<unique-bucket-name>
 if the commands above don't work, then find a different option to install terraform and ansible.
 
 
-##Deployment Process
+## Deployment Process
 
 1. After cloning the repository, create 3 terminals. You should be in the /environment for all 3. Use the command to access each directory.
     
@@ -139,7 +137,7 @@ if the commands above don't work, then find a different option to install terraf
 
 
 
-AWS Actions
+## AWS Actions
 
 Once you deployed the infrastructure for both prod/network and prod/webserver, we do some tasks.
 
